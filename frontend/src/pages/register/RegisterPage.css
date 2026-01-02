@@ -1,0 +1,162 @@
+.registerOuter {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #202124;
+}
+
+.registerOuter .registerInner {
+  width: 600px;
+  max-width: 80%;
+  height: 520px;
+  display: flex;
+  box-sizing: border-box;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+}
+
+.element {
+  flex: 1;
+}
+
+.registerLeft {
+  background-image: url("../../images/register.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 15px 0 0 15px;
+  position: relative;
+}
+
+.registerLeft::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 15px 0 0 15px;
+}
+
+.registerRight {
+  width: 50%;
+  background-color: #ffffff;
+  border-radius: 0 15px 15px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.registerRight .heading {
+  padding-top: 20px;
+  color: #000000;
+  font-size: 26px;
+}
+
+.registerRight .textfile-box {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.registerRight .textfile-box .textfield {
+  width: 260px;
+  background-color: #dbdeee;
+  border-color: none;
+}
+
+.registerRight .button-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.registerRight .button-box .button {
+  width: 270px;
+}
+
+
+.registerRight .bottom-box {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 60px;
+}
+
+.registerRight .bottom-box > p {
+  margin: 0;
+  font-size: 12px;
+  color: #000000;
+}
+
+.registerRight .bottom-box > p > span > a {
+  color: #606685;
+}
+
+@media (max-width: 1200px) {
+  .registerOuter .registerInner {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .registerRight {
+    width: 100%;
+    border-radius: 0 0 15px 15px;
+  }
+
+  .registerRight .heading {
+    padding-top: 10px;
+  }
+
+  .registerRight .textfile-box {
+    padding-top: 20px;
+  }
+
+  .registerRight .textfile-box .textfield {
+    width: 330px;
+  }
+
+  .registerRight .button-box .button {
+    width: 340px;
+    font-size: 13px;
+    margin-top: 20px;
+  }
+
+  .registerRight .bottom-box {
+    margin: 40px 0 30px 0;
+  }
+}
+
+@media (max-width: 458px) {
+  .registerRight .heading {
+    padding-top: 5px;
+    font-size: 18px;
+  }
+
+  .registerRight .textfile-box {
+    padding-top: 10px;
+  }
+
+  .registerRight .textfile-box .textfield,
+  .registerRight .button-box .button{
+    width: 240px;
+  }
+}
+
+/* @media (max-width: 400px) {
+  .registerRight .heading {
+    padding-top: 5px;
+    font-size: 18px;
+  }
+
+  .registerRight .textfile-box {
+    padding-top: 10px;
+  }
+
+  .registerRight .textfile-box .textfield,
+  .registerRight .button-box .button{
+    width: 240px;
+  }
+} */

@@ -1,0 +1,107 @@
+@import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+.footer-outer {
+  width: 100%;
+  padding: 20px 0;
+  background-color: #304d9a;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.top > img {
+  width: 100px;
+  height: 100px;
+}
+
+.top > span {
+  font-family: "Kaushan Script";
+  color: white;
+  text-decoration: none;
+  text-align: start;
+  font-size: 25px;
+}
+
+.bottom{
+    width: 100%;
+    display: flex;
+}
+
+.bottom-left{
+    flex: 1;
+}
+
+.bottom-left > div  {
+    margin-left: 50px;
+    display: flex;
+}
+
+.bottom-left > div > span {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    text-align: start;
+    padding: 10px;
+}
+
+.bottom-right{
+    flex: 3;
+    display: flex;
+    align-items:center ;
+    justify-content: space-evenly;
+}
+
+.bottom-right > img {
+    width: 30px;
+    height: 30px;
+    display: flex;
+}
+
+@media (max-width: 1000px) {
+  .top span {
+    font-size: 20px;
+  }
+
+  .bottom {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .bottom-left > div {
+    margin-left: 0;
+    align-items: center;
+  }
+
+  .bottom-right {
+    width: 100%;
+    justify-content: center;
+    gap: 25px;
+  }
+}
+
+@media (max-width: 799px) {
+
+  .top > span {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .bottom-left  span {
+    width: 130px;
+    font-size: 13px;
+
+  }
+
+  .bottom-right  img {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+
+

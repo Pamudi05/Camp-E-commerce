@@ -1,0 +1,119 @@
+.homeOuter {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.homeOuter .homeInner {
+  position: relative;
+}
+
+.homeOuter .homeInner .navWrapper {
+  padding-top: 20px;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.homeOuter .homeInner .homeBackground > img {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  display: block;
+}
+
+.homeOuter .homeInner .homeBox {
+  width: 100%;
+  height: 85px;
+  background-color: #304d9a;
+}
+
+.homeBackground .homTextContainer {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 700px;
+}
+
+.homeBackground .homTextContainer .homeText {
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+.homeBackground .homTextContainer .heading {
+  font-size: 30px;
+  max-width: 100%;
+}
+
+.homeBackground .homTextContainer .subheading {
+  font-size: 18px;
+  width: 450px;
+}
+
+.homTextContainer .homeButton .button {
+  width: 150px !important;
+  height: 40px !important;
+  border-radius: 20px !important;
+  background-color: #304d9a !important;
+  transition: all 0.3s ease;
+  margin-top: 10px !important;
+}
+
+.homTextContainer .homeButton .button:hover {
+  background-color: #1f3b7a !important;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border: 2px solid white !important;
+}
+
+@media (max-width: 1024px) {
+  .homeBackground .homTextContainer .heading {
+    font-size: 26px;
+  }
+
+  .homeBackground .homTextContainer .subheading {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .homeBackground .homTextContainer {
+    top: 40%;
+  }
+
+  .homeBackground .homTextContainer .heading {
+    font-size: 23px;   
+  }
+
+  .homeBackground .homTextContainer .subheading {
+    font-size: 15px;
+  }
+
+  .homeBackground .homeButton .button {
+    width: 130px !important; 
+    height: 35px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .homeBackground .homTextContainer .heading {
+    font-size: 18px;   
+  }
+
+  .homeBackground .homTextContainer .subheading {
+    font-size: 13px;
+  }
+
+  .homeBackground .homeButton .button {
+    width: 110px !important;
+    height: 32px !important;
+    font-size: 12px !important;
+  }
+}

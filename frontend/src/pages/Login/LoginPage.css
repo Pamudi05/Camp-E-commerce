@@ -1,0 +1,171 @@
+.loginOuter {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #202124;
+}
+
+.loginOuter .loginInner {
+  width: 600px;
+  max-width: 95%;
+  height: 520px;
+  display: flex;
+  box-sizing: border-box;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+}
+
+.element {
+  flex: 1;
+}
+
+.loginLeft {
+  background-image: url("../../images/login.jpg");
+  background-position: center;
+  background-size: cover;
+  border-radius: 15px 0 0 15px;
+  position: relative;
+}
+
+.loginLeft::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 15px 0 0 15px;
+}
+
+.loginRight {
+  width: 50%;
+  background-color: #ffffff;
+  border-radius: 0 15px 15px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.loginRight .heading {
+  padding-top: 20px;
+  color: #000000;
+  font-size: 26px;
+}
+
+.loginRight .textfile-box {
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.loginRight .textfile-box .textfield {
+  width: 260px;
+  background-color: #dbdeee;
+  border-color: none;
+  outline: none;
+}
+
+.loginRight .forgot-box {
+  text-align: end;
+  padding-right: 18px;
+}
+
+.loginRight .forgot-box > p {
+  margin: 0;
+  font-size: 12px;
+  color: #606685;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.loginRight .button-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loginRight .button-box .button {
+  width: 270px;
+}
+
+.loginRight .bottom-box {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 60px;
+}
+
+.loginRight .bottom-box > p {
+  margin: 0;
+  font-size: 13px;
+  color: #000000;
+}
+
+.loginRight .bottom-box > p > span > a {
+  color: #606685;
+  cursor: pointer;
+}
+
+@media (max-width: 1200px) {
+  .loginOuter .loginInner {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .loginRight {
+    width: 100%;
+    border-radius: 0 0 15px 15px;
+  }
+
+  .loginRight .heading {
+    padding-top: 10px;
+  }
+
+  .loginRight .textfile-box {
+    padding-top: 20px;
+  }
+
+  .loginRight .textfile-box .textfield {
+    width: 330px;
+  }
+
+  .loginRight .forgot-box {
+    padding-right: 22%;
+  }
+
+  .loginRight .button-box .button {
+    width: 340px;
+    font-size: 13px;
+    margin-top: 20px;
+  }
+
+  .loginRight .bottom-box {
+    margin: 40px 0 30px 0;
+  }
+}
+
+@media (max-width: 400px) {
+  .loginOuter .loginInner {
+    width: 300px;
+  }
+
+  .loginRight .heading {
+    padding-top: 5px;
+    font-size: 18px;
+  }
+
+  .loginRight .textfile-box {
+    padding-top: 10px;
+  }
+
+  .loginRight .textfile-box .textfield,
+  .loginRight .button-box .button {
+    width: 240px;
+  }
+
+  .loginRight .forgot-box {
+    padding-right: 10%;
+  }
+}

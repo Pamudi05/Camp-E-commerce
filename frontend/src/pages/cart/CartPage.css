@@ -1,0 +1,26 @@
+.bottom-bar{
+    width: 95%;
+    position: relative;
+    top:50px;
+    left: 30px;
+    padding: 20px 0 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 30px;
+}
+
+@media (max-width: 1200px) {
+    .bottom-bar{
+        width: 90%;
+    }
+}
+
+@media (max-width: 400px) {
+    .bottom-bar{
+        flex-direction: column;
+         gap: 0;
+         top:40px;
+         padding: 0 0 20px 0;
+    }
+}
