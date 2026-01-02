@@ -119,6 +119,13 @@
     border-radius: 0 0 15px 15px;
   }
 
+  .loginLeft {
+    border-radius: 15px 15px 0 0;
+  }
+  .loginLeft::before {
+    border-radius: 15px 15px 0 0;
+  }
+
   .loginRight .heading {
     padding-top: 10px;
   }

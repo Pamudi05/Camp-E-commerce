@@ -5,18 +5,31 @@ import close from "../../images/close.png";
 import arrowDown from "../../images/arrow-down.png";
 import person from "../../images/person.webp";
 import light from "../../images/light_mode.png";
-import dark from "../../images/dark_mode.png";
 import logout from "../../images/logout.png";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <div className="navbar">
+    <div className={`navbar ${scrolled ? "scrolled" : ""}`}>
       <div className="left">
         <img src={logo} alt="logo" />
         <span>Adventure Starts Here</span>

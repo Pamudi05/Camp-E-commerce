@@ -1,10 +1,15 @@
 .product-outer{
     padding-top: 10px;
 }
+
+.allProducts{
+    top: 90px;
+    position: relative;
+}
+
 .top-bar{
     width: 90%;
     height: 50px;
-    margin-top: 10px;
     display: flex;
     font-weight: 500;
     padding-left: 60px;

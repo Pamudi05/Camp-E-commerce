@@ -76,7 +76,6 @@
   width: 270px;
 }
 
-
 .registerRight .bottom-box {
   display: flex;
   flex-direction: column;
@@ -99,6 +98,13 @@
     width: 400px;
     display: flex;
     flex-direction: column;
+  }
+
+  .registerLeft {
+    border-radius: 15px 15px 0 0;
+  }
+  .registerLeft::before {
+    border-radius: 15px 15px 0 0;
   }
 
   .registerRight {
@@ -140,7 +146,7 @@
   }
 
   .registerRight .textfile-box .textfield,
-  .registerRight .button-box .button{
+  .registerRight .button-box .button {
     width: 240px;
   }
 }
