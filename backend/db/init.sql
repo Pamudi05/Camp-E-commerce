@@ -1,6 +1,11 @@
 CREATE DATABASE IF NOT EXISTS camp_db;
 USE camp_db;
 
+CREATE TABLE IF NOT EXISTS roles (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    role ENUM('admin', 'customer') NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS users (
     id INT PRIMARY KEY AUTO_INCREMENT,
     email VARCHAR(150) UNIQUE NOT NULL,
@@ -13,9 +18,4 @@ CREATE TABLE IF NOT EXISTS users (
 
     roleId INT NOT NULL,
     CONSTRAINT fk_user_role FOREIGN KEY (roleId) REFERENCES roles(id)
-);
-
-CREATE TABLE IF NOT EXISTS roles (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    role ENUM('admin', 'customer') NOT NULL
 );
