@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./RegisterPage.css";
 import TextField from "../../components/input/TextField";
 import Button from "../../components/button/Button";
@@ -15,21 +15,26 @@ const RegisterPage = () => {
 
   const handleRegister = async () => {
     try {
-      const response = await axios.post("http://localhost:5000/api/v1/users/create"
-, {
-        email,
-        name,
-        phoneNumber,
-        password,
-      });
+      const response = await axios.post(
+        "http://localhost:5000/api/v1/users/create",
+        {
+          email,
+          name,
+          phoneNumber,
+          password,
+        }
+      );
 
-      console.log(response);
-      console.log(response.data);
+      setEmail("");
+      setName("");
+      setPhoneNumber("");
+      setPassword("");
+
       toast.success("User Registered Succefully");
       return response.data;
     } catch (error) {
-      toast.error("Register  Failed")
-      console.error(error)
+      toast.error("Register  Failed");
+      console.error(error);
     }
   };
 
