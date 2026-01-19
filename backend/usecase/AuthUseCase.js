@@ -6,6 +6,7 @@ import { config } from "dotenv";
 config();
 
 const secretkey = process.env.SECRET_KEY;
+const refreshSecretkey = process.env.REFRESH_SECRET_KEY;
 
 export const loginUserUseCase = async (email, password) => {
   const existingUser = await loginUserRepository(email);
@@ -20,24 +21,23 @@ export const loginUserUseCase = async (email, password) => {
     res.status(401).json({ message: "Invalid Password" });
   }
 
-  const token = jwt.sign(
-    {
-      userId: existingUser.id,
-      email: existingUser.email,
-      roleId: existingUser.roleId,
-    },
-    secretkey,
-    {
-      expiresIn: "5h",
-    },
-  );
+  const payload = {
+    userId: existingUser.id,
+    email: existingUser.email,
+    roleId: existingUser.roleId,
+  };
+
+  const token = jwt.sign(payload, secretkey, {
+    expiresIn: "2h",
+  });
+
+  const refreshToken = jwt.sign(payload, refreshSecretkey, {
+    expiresIn: "24h",
+  });
 
   return {
     token,
-    user: {
-      userId: existingUser.id,
-      email: existingUser.email,
-      roleId: existingUser.roleId,
-    },
+    refreshToken,
+    user: payload
   };
 };
