@@ -11,24 +11,72 @@ const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+
+  const [emailTouched, setEmailTouched] = useState(false);
+  const [passwordTouched, setPasswordTouched] = useState(false);
+
+  const validateEmail = (email: string) => {
+    const emailRegex = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
+    return emailRegex.test(email);
+  };
+
+  const validatePassword = (password: string) => {
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+    return passwordRegex.test(password);
+  };
+
+  const handleEmailError = () => {
+    setEmailTouched(true);
+
+    if (!validateEmail(email)) {
+      setEmailError("Incorrect email. Please try again.");
+    } else {
+      setEmailError("");
+    }
+  };
+
+  const handlePasswordError = () => {
+    setPasswordTouched(true);
+
+    if (!validatePassword(password)) {
+      setPasswordError("Password must be at least 8 characters.");
+    } else {
+      setPasswordError("");
+    }
+  };
+
   const handleLogin = async () => {
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/v1/auth/login",
-        {
-          email,
-          password,
-        },
-      );
+      setEmailTouched(true);
+      setPasswordTouched(true);
 
-      toast.success("User Login Succefully");
-      navigate('/layout')
-      return response.data;
+      const isEmailValid = validateEmail(email);
+      const isPasswordValid = validatePassword(password);
+
+      setEmailError(isEmailValid ? "" : "Email is required");
+      setPasswordError(isPasswordValid ? "" : "Password is required");
+
+      if (isEmailValid && isPasswordValid) {
+        const response = await axios.post(
+          "http://localhost:5000/api/v1/auth/login",
+          {
+            email,
+            password,
+          },
+        );
+
+        toast.success("User Login Succefully");
+        navigate("/layout");
+        return response.data;
+      }
     } catch (error) {
       toast.error("Login Failed");
       console.error(error);
     }
   };
+
   return (
     <div className="loginOuter">
       <div className="loginInner">
@@ -42,14 +90,24 @@ const LoginPage = () => {
               placeholder="Enter you email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              onBlur={handleEmailError}
             />
+            {emailTouched && emailError && (
+              <p className="error-text">{emailError}</p>
+            )}
+            </div>
+            <div className="textfile-box">
             <TextField
               className="textfield"
               type="password"
               placeholder="Enter you password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              onBlur={handlePasswordError}
             />
+            {passwordTouched && passwordError && (
+              <p className="error-text">{passwordError}</p>
+            )}
           </div>
           <div className="forgot-box">
             <p>forgotPassowrd?</p>

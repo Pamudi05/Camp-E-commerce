@@ -13,9 +13,6 @@ interface TextFielddProps {
   backgroundColor?: string;
   borderRadius?: string;
   border?: string;
-  fontWeight?: number;
-  fontFamily?: string;
-  fontSize?: string;
   paddingLeft?: string;
   outline?: string;
   style?: React.CSSProperties;
@@ -36,9 +33,6 @@ const TextField: React.FC<TextFielddProps> = ({
   backgroundColor = "#DBDEEE",
   border = "none",
   borderRadius = "10px",
-  fontWeight,
-  fontFamily,
-  fontSize,
   paddingLeft = "10px",
   outline = "none",
   style,
@@ -61,7 +55,7 @@ const TextField: React.FC<TextFielddProps> = ({
           paddingLeft,
           backgroundColor,
           border,
-          outline: "none",
+          outline,
         }}
       />
   );
