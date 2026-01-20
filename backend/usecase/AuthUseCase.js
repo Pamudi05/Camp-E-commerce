@@ -1,4 +1,4 @@
-import { loginUserRepository , forgotPasswordRepository , verifyOtpRepository } from "../repository/AuthRepository.js";
+import { loginUserRepository , forgotPasswordRepository , verifyOtpRepository , resetPasswordRepository} from "../repository/AuthRepository.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { config } from "dotenv";
@@ -32,13 +32,13 @@ export const loginUserUseCase = async (email, password) => {
     expiresIn: "2h",
   });
 
-  const refreshToken = jwt.sign(payload, refreshSecretkey, {
-    expiresIn: "24h",
-  });
+  // const refreshToken = jwt.sign(payload, refreshSecretkey, {
+  //   expiresIn: "24h",
+  // });
 
   return {
     token,
-    refreshToken,
+    // refreshToken,
     user: payload,
   };
 };
@@ -54,3 +54,7 @@ export const forgotPasswordUseCase = async (email) => {
 export const verifyOtpUseCase = async(email, OTP) => {
   await verifyOtpRepository(email, OTP);
 }
+
+export const resetPasswordUseCase = async (email, newPassword) => {
+  await resetPasswordRepository(email, newPassword);
+};

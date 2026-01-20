@@ -2,12 +2,13 @@ import {
   forgotPasswordUseCase,
   loginUserUseCase,
   verifyOtpUseCase,
+  resetPasswordUseCase
 } from "../usecase/AuthUseCase.js";
 
 export const loginUser = async (req, res) => {
   const { email, password } = req.body;
   try {
-    const { token, user } = await loginUserUseCase(email, password);
+    const { token } = await loginUserUseCase(email, password);
 
     res.cookie("token", token, {
       httpOnly: true,
@@ -16,13 +17,13 @@ export const loginUser = async (req, res) => {
       sameSite: "none",
     });
 
-    res.cookie("refreshToken", refreshToken, {
-      httpOnly: true,
-      secure: true,
-      sameSite: "strict",
-    });
+    // res.cookie("refreshToken", refreshToken, {
+    //   httpOnly: true,
+    //   secure: true,
+    //   sameSite: "strict",
+    // });
 
-    return res.status(200).json({ message: "User login Successfully", user });
+    return res.status(200).json({ message: "User login Successfully" });
   } catch (error) {
     return res.status(400).json({ error: error.message });
   }
@@ -45,6 +46,17 @@ export const verifyOtp = async (req, res) => {
     const result = await verifyOtpUseCase(email, otp);
 
     return res.status(200).json({ message: "OTP Verified", result });
+  } catch (error) {
+    return res.status(400).json({ message: error.message });
+  }
+};
+
+export const resetPassword = async (req, res) => {
+  const { email , password } = req.body;
+  try {
+    const result = resetPasswordUseCase(email,password);
+
+    return res.status(200).json({ message: "Password Reset Successfully", result });
   } catch (error) {
     return res.status(400).json({ message: error.message });
   }
