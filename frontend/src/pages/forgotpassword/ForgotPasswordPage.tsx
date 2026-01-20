@@ -37,11 +37,13 @@ const ForgotPasswordPage = () => {
 
       if (isEmailValid) {
         const response = await axios.post(
-          "http://localhost:5000/api/v1/check/forgotpassword",
+          "http://localhost:5000/api/v1/auth/forgotpassword",
           {
             email,
           },
         );
+
+        localStorage.setItem("forgotEmail", email);
 
         toast.success("OTP sent to your email");
         navigate('/otp')
