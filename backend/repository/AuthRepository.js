@@ -1,4 +1,5 @@
 import { pool } from "../db/dbConnection.js";
+import redisClient from "../util/redisClient.js";
 
 const db = await pool.getConnection();
 
@@ -16,4 +17,11 @@ export const loginUserRepository = async (email) => {
   } finally {
     db.release();
   }
+};
+
+export const forgotPasswordRepository = async (email, OTP) => {
+  await redisClient.set(`otp:${email}`, OTP, {
+    EX: 300, // 300 seconds = 5 minutes
+  });
+  return true;
 };

@@ -1,4 +1,7 @@
-import { loginUserUseCase } from "../usecase/AuthUseCase.js";
+import {
+  forgotPasswordUseCase,
+  loginUserUseCase,
+} from "../usecase/AuthUseCase.js";
 
 export const loginUser = async (req, res) => {
   const { email, password } = req.body;
@@ -22,4 +25,14 @@ export const loginUser = async (req, res) => {
   } catch (error) {
     return res.status(400).json({ error: error.message });
   }
+};
+
+export const forgotPassword = async (req, res) => {
+  const {email} = req.body;
+
+  try {
+    const result = forgotPasswordUseCase(email);
+
+    return res.status(200).json({ message: "User login Successfully", result });
+  } catch (error) {}
 };

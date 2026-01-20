@@ -1,7 +1,8 @@
-import { loginUserRepository } from "../repository/AuthRepository.js";
+import { loginUserRepository , forgotPasswordRepository } from "../repository/AuthRepository.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { config } from "dotenv";
+import { sendEmail } from "../util/email.js";
 
 config();
 
@@ -38,6 +39,14 @@ export const loginUserUseCase = async (email, password) => {
   return {
     token,
     refreshToken,
-    user: payload
+    user: payload,
   };
+};
+
+export const forgotPasswordUseCase = async (email) => {
+  const OTP = Math.floor(Math.random() * 9000 + 1000);
+
+  await forgotPasswordRepository(email, OTP);
+
+  await sendEmail(email, "Your OTP for Password Reset", "otpEmail", { OTP });
 };

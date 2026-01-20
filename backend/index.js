@@ -3,6 +3,7 @@ import cors from "cors";
 import { connectToDatabase } from "./db/dbConnection.js";
 import userRouter from './routes/UserRoutes.js'
 import authRouter from './routes/AuthRoutes.js'
+import forgotRouter from './routes/ForgotRoutes.js'
 
 const app = express();
 app.use(express.json());
@@ -15,6 +16,7 @@ const PORT = 5000;
 
 app.use("/api/v1/users/", userRouter);
 app.use("/api/v1/auth/", authRouter);
+app.use("/api/v1/check/", forgotRouter);
 
 connectToDatabase().then(() => {
   app.listen(PORT, () => {
