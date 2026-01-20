@@ -9,7 +9,6 @@ export const sendEmail = async (to, subject, templateName, variables) => {
       "util",
       "emailTemplates",
       `${templateName}.html`,
-      // "createdEmail.html",
     );
 
     let html = fs.readFileSync(templatePath, "utf8");
