@@ -62,7 +62,7 @@
   color: #e74c3c;
   font-size: 10px;
   margin: 0;
-  width: 88%;
+  width: 85% !important;
 }
 
 .loginRight .textfile-box .textfield {
@@ -145,7 +145,7 @@
   }
 
   .loginRight .forgot-box {
-    padding-right: 22%;
+    padding-right: 8%;
   }
 
   .loginRight .button-box .button {
@@ -176,9 +176,5 @@
   .loginRight .textfile-box .textfield,
   .loginRight .button-box .button {
     width: 240px;
-  }
-
-  .loginRight .forgot-box {
-    padding-right: 10%;
   }
 }

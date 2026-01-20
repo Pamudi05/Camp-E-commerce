@@ -59,17 +59,13 @@ const LoginPage = () => {
       setPasswordError(isPasswordValid ? "" : "Password is required");
 
       if (isEmailValid && isPasswordValid) {
-        const response = await axios.post(
-          "http://localhost:5000/api/v1/auth/login",
-          {
-            email,
-            password,
-          },
-        );
+        await axios.post("http://localhost:5000/api/v1/auth/login", {
+          email,
+          password,
+        });
 
         toast.success("User Login Succefully");
         navigate("/layout");
-        return response.data;
       }
     } catch (error) {
       toast.error("Login Failed");
@@ -77,9 +73,9 @@ const LoginPage = () => {
     }
   };
 
-  const handleForgotPassword = ()=>{
-    navigate('/forgotpassword')
-  }
+  const handleForgotPassword = () => {
+    navigate("/forgotpassword");
+  };
 
   return (
     <div className="loginOuter">
@@ -99,8 +95,8 @@ const LoginPage = () => {
             {emailTouched && emailError && (
               <p className="error-text">{emailError}</p>
             )}
-            </div>
-            <div className="textfile-box">
+          </div>
+          <div className="textfile-box">
             <TextField
               className="textfield"
               type="password"

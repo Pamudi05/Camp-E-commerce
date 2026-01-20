@@ -36,7 +36,7 @@ const OTPPage = () => {
       });
 
       toast.success("OTP verified!");
-      navigate("/reset-password");
+      navigate("/resetpassword");
     } catch (error: any) {
       toast.error(error.response?.data?.message || "Invalid OTP");
     }
