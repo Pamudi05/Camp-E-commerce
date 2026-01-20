@@ -77,6 +77,10 @@ const LoginPage = () => {
     }
   };
 
+  const handleForgotPassword = ()=>{
+    navigate('/forgotpassword')
+  }
+
   return (
     <div className="loginOuter">
       <div className="loginInner">
@@ -110,7 +114,7 @@ const LoginPage = () => {
             )}
           </div>
           <div className="forgot-box">
-            <p>forgotPassowrd?</p>
+            <p onClick={handleForgotPassword}>forgotPassowrd?</p>
           </div>
           <div className="button-box">
             <Button

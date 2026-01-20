@@ -12,6 +12,8 @@ import PlaceOrderPage from './pages/order/PlaceOrderPage';
 import ImagePage from './pages/images/ImagePage';
 import HomePage from './pages/home/HomePage';
 import AboutUs from './pages/about/AboutUs';
+import ForgotPasswordPage from './pages/forgotpassword/ForgotPasswordPage';
+import OTPPage from './pages/forgotpassword/OTPPage';
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
       <Routes>
           <Route path='/' element={<LoginPage />} />
           <Route path='/register' element={<RegisterPage />} />
+          <Route path='/forgotpassword' element={<ForgotPasswordPage />} />
+          <Route path='/otp' element={<OTPPage />} />
           <Route path='/layout' element={<LayoutPage />} />
           <Route path='/homepage' element={<HomePage />} />
           <Route path='/aboutUs' element={<AboutUs />} />
