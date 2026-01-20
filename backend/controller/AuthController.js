@@ -1,6 +1,7 @@
 import {
   forgotPasswordUseCase,
   loginUserUseCase,
+  verifyOtpUseCase,
 } from "../usecase/AuthUseCase.js";
 
 export const loginUser = async (req, res) => {
@@ -28,11 +29,23 @@ export const loginUser = async (req, res) => {
 };
 
 export const forgotPassword = async (req, res) => {
-  const {email} = req.body;
+  const { email } = req.body;
 
   try {
     const result = forgotPasswordUseCase(email);
 
     return res.status(200).json({ message: "User login Successfully", result });
   } catch (error) {}
+};
+
+export const verifyOtp = async (req, res) => {
+  const { email, otp } = req.body;
+
+  try {
+    const result = await verifyOtpUseCase(email, otp);
+
+    return res.status(200).json({ message: "OTP Verified", result });
+  } catch (error) {
+    return res.status(400).json({ message: error.message });
+  }
 };

@@ -1,4 +1,4 @@
-import { loginUserRepository , forgotPasswordRepository } from "../repository/AuthRepository.js";
+import { loginUserRepository , forgotPasswordRepository , verifyOtpRepository } from "../repository/AuthRepository.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { config } from "dotenv";
@@ -50,3 +50,7 @@ export const forgotPasswordUseCase = async (email) => {
 
   await sendEmail(email, "Your OTP for Password Reset", "otpEmail", { OTP });
 };
+
+export const verifyOtpUseCase = async(email, OTP) => {
+  await verifyOtpRepository(email, OTP);
+}

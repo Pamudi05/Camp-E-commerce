@@ -25,3 +25,19 @@ export const forgotPasswordRepository = async (email, OTP) => {
   });
   return true;
 };
+
+export const verifyOtpRepository = async (email,OTP)=> {
+  const currentOtp = await redisClient.get(`otp:${email}`);
+
+  if (!currentOtp) {
+    throw new Error("OTP expired or not found");
+  }
+
+  if (currentOtp !== OTP) {
+    throw new Error("Invalid OTP");
+  }
+
+  await redisClient.del(`otp:${email}`);
+
+  return true;
+}
