@@ -1,6 +1,7 @@
 .homeOuter {
   width: 100%;
-  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
 }
 
 .homeOuter .homeInner {
@@ -8,7 +9,6 @@
 }
 
 .homeOuter .homeInner .navWrapper {
-  padding-top: 20px;
   position: absolute;
   top: 0;
   width: 100%;
@@ -16,9 +16,8 @@
 }
 
 .homeOuter .homeInner .homeBackground > img {
-  width: 100%;
-  height: 100vh;
-  object-fit: cover;
+  width: 100vw;
+  height: auto;
   display: block;
 }
 

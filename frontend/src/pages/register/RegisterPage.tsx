@@ -23,6 +23,8 @@ const RegisterPage = () => {
   const [phoneTouched, setPhoneTouched] = useState(false);
   const [passwordTouched, setPasswordTouched] = useState(false);
 
+  const [loading, setLoading] = useState(false);
+
   const validateEmail = (email: string) => {
     const emailRegex = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
     return emailRegex.test(email);
@@ -34,10 +36,7 @@ const RegisterPage = () => {
 
   const validatePhone = (phoneNumber: string) => {
     const phoneRegex = /^(?:\+94\s?7\d{8}|0\s*7\d{1}\s*\d{3}\s*\d{4})$/;
-    console.log(phoneNumber)
-    console.log(phoneRegex.test(phoneNumber))
-    return phoneRegex.test(phoneNumber);
-    
+    return phoneRegex.test(phoneNumber);  
   };
 
   const validatePassword = (password: string) => {
@@ -77,6 +76,8 @@ const RegisterPage = () => {
 
   const handleRegister = async () => {
     try {
+      setLoading(true);
+
       setEmailTouched(true);
       setNameTouched(true);
       setPhoneTouched(true);
@@ -181,7 +182,8 @@ const RegisterPage = () => {
               onButtonClick={handleRegister}
               className="button"
               type="submit"
-              name="REGISTER"
+              name={loading ? "REGISTERING..." : "REGISTER"}
+              disable={loading}
             />
           </div>
           <div className="bottom-box">

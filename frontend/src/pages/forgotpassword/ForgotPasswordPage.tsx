@@ -36,7 +36,7 @@ const ForgotPasswordPage = () => {
       setEmailError(isEmailValid ? "" : "Email is required");
 
       if (isEmailValid) {
-        const response = await axios.post(
+        await axios.post(
           "http://localhost:5000/api/v1/auth/forgotpassword",
           {
             email,
@@ -47,7 +47,6 @@ const ForgotPasswordPage = () => {
 
         toast.success("OTP sent to your email");
         navigate('/otp')
-        console.log (response.data);
       }
     } catch (error: any) {
       toast.error(error.response?.data?.message || "Failed to send OTP");

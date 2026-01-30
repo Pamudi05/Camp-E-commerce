@@ -8,12 +8,15 @@ import light from "../../images/light_mode.png";
 import logout from "../../images/logout.png";
 
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  const location = useLocation();
+  const isHome = location.pathname === "/layout";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,12 +27,14 @@ const NavBar = () => {
       }
     };
 
+    handleScroll();
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [location]);
 
   return (
-    <div className={`navbar ${scrolled ? "scrolled" : ""}`}>
+    <div className={`navbar ${isHome ? scrolled ? "scrolled" : "navbar-transparent" : scrolled ? "scrolled" :  "navbar-colored"}`}>
       <div className="left">
         <img src={logo} alt="logo" />
         <span>Adventure Starts Here</span>

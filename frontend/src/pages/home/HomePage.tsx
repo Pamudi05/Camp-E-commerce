@@ -1,5 +1,5 @@
 import "./HomePage.css";
-import top from "../../images/top-1.png";
+import top from "../../images/top.jpg";
 import NavBar from "../../components/navBar/NavBar";
 import Button from "../../components/button/Button";
 import { useNavigate } from "react-router-dom";
