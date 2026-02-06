@@ -8,6 +8,8 @@ import { toast } from "react-toastify";
 
 const LoginPage = () => {
   const navigate = useNavigate();
+  const API = process.env.REACT_APP_API_URL;
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -59,7 +61,7 @@ const LoginPage = () => {
       setPasswordError(isPasswordValid ? "" : "Password is required");
 
       if (isEmailValid && isPasswordValid) {
-        await axios.post("http://localhost:5000/api/v1/auth/login", {
+        await axios.post(`${API}/auth/login`, {
           email,
           password,
         });

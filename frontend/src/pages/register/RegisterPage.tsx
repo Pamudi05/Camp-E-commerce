@@ -8,6 +8,8 @@ import { toast } from "react-toastify";
 
 const RegisterPage = () => {
   const navigate = useNavigate();
+  const API = process.env.REACT_APP_API_URL;
+
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -95,7 +97,7 @@ const RegisterPage = () => {
 
       if (isEmailValid && isNameValid && isPhoneValid && isPasswordValid) {
         const response = await axios.post(
-          "http://localhost:5000/api/v1/users/create",
+          `${API}/users/create`,
           {
             email,
             name,

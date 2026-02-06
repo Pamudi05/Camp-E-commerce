@@ -8,6 +8,7 @@ import axios from "axios";
 
 const OTPPage = () => {
   const navigate = useNavigate();
+  const API = process.env.REACT_APP_API_URL;
 
   const [otp, setOtp] = useState(["", "", "", ""]);
 
@@ -30,7 +31,7 @@ const OTPPage = () => {
     }
 
     try {
-      await axios.post("http://localhost:5000/api/v1/auth/verifyOtp", {
+      await axios.post(`${API}/verifyOtp`, {
         email,
         otp: finalOtp,
       });

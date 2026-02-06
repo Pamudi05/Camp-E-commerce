@@ -8,6 +8,8 @@ import { useNavigate } from "react-router-dom";
 
 const ForgotPasswordPage = () => {
   const navigate = useNavigate();
+  const API = process.env.REACT_APP_API_URL;
+  
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
   const [emailTouched, setEmailTouched] = useState(false);
@@ -37,7 +39,7 @@ const ForgotPasswordPage = () => {
 
       if (isEmailValid) {
         await axios.post(
-          "http://localhost:5000/api/v1/auth/forgotpassword",
+          `${API}/auth/forgotpassword`,
           {
             email,
           },

@@ -8,6 +8,8 @@ import { toast } from "react-toastify";
 
 const ResetPasswordPage = () => {
   const navigate = useNavigate();
+  const API = process.env.REACT_APP_API_URL;
+
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [passwordTouched, setPasswordTouched] = useState(false);
@@ -38,7 +40,7 @@ const ResetPasswordPage = () => {
       setPasswordError(isPasswordValid ? "" : "Password is required");
 
       if (isPasswordValid) {
-        await axios.post("http://localhost:5000/api/v1/auth/resetpassword", {
+        await axios.post(`${API}/auth/resetpassword`, {
           email,
           password,
         });
